@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 開発者モード(デバッグしたい時にはコメント外してください。ユーザーのエラーページが無効にできます) -->
+	<!-- <constant name="struts.devMode" value="true" /> -->
+	<constant name="struts.ui.theme" value="simple" />
+	<package name="com.furniture_rental.action" extends="struts-default">
+	  <!-- # -->
+	  <action name="HomeAction" class="com.furniture_rental.action.HomeAction" method="execute">
+	    <result name="success">home.jsp</result>
+	  </action>
+
+	  <!-- 1 -->
+	  <action name="CreateUserAction" class="com.furniture_rental.action.CreateUserAction" method="execute">
+	    <result name="success">createUser.jsp</result>
+	    <result name="sessionTimeout">sessionError.jsp</result>
+	  </action>
+
+	  <!-- 1 -->
+	  <action name="CreateUserConfirmAction" class="com.furniture_rental.action.CreateUserConfirmAction" method="execute">
+	    <result name="success">createUserConfirm.jsp</result>
+	    <result name="error">createUser.jsp</result>
+	    <result name="sessionTimeout">sessionError.jsp</result>
+	  </action>
+
+	  <!-- 1 -->
+	  <action name="CreateUserCompleteAction" class="com.furniture_rental.action.CreateUserCompleteAction" method="execute">
+	    <result name="success">createUserComplete.jsp</result>
+	    <result name="error">systemError.html</result>
+	    <result name="sessionTimeout">sessionError.jsp</result>
+	  </action>
+
+	  <!-- 2 -->
+	  <action name="GoLoginAction" class="com.furniture_rental.action.GoLoginAction" method="execute">
+	    <result name="success">login.jsp</result>
+	    <result name="sessionTimeout">sessionError.jsp</result>
+	  </action>
+
+	  <!-- 2 -->
+	  <action name="LoginAction" class="com.furniture_rental.action.LoginAction" method="execute">
+	    <result name="success">home.jsp</result>
+	    <result name="error">login.jsp</result>
+	    <result name="sessionTimeout">sessionError.jsp</result>
+	    <result name="cart">cart.jsp</result>
+	    <result name="DBError">systemError.html</result>
+	  </action>
+
+	  <!-- 3 -->
+	  <action name="ResetPasswordAction" class="com.furniture_rental.action.ResetPasswordAction" method="execute">
+	    <result name="success">resetPassword.jsp</result>
+	  </action>
+
+	  <!-- 3 -->
+	  <action name="ResetPasswordConfirmAction" class="com.furniture_rental.action.ResetPasswordConfirmAction" method="execute">
+	    <result name="success">resetPasswordConfirm.jsp</result>
+	    <result name="error">resetPassword.jsp</result>
+	  </action>
+
+	  <!-- 3 -->
+	  <action name="ResetPasswordCompleteAction" class="com.furniture_rental.action.ResetPasswordCompleteAction" method="execute">
+	    <result name="success">resetPasswordComplete.jsp</result>
+	    <result name="error">systemError.html</result>
+	  </action>
+
+	  <!-- 4-1 -->
+	  <action name="ProductListAction" class="com.furniture_rental.action.ProductListAction" method="execute">
+	    <result name="success">productList.jsp</result>
+	  </action>
+
+	  <!-- 4-2 -->
+	  <action name="ProductDetailsAction" class="com.furniture_rental.action.ProductDetailsAction" method="execute">
+	    <result name="success">productDetails.jsp</result>
+	  </action>
+
+	  <!-- 5 -->
+	  <action name="SearchItemAction" class="com.furniture_rental.action.SearchItemAction" method="execute">
+	    <result name="success">productList.jsp</result>
+	  </action>
+
+	  <!-- 6 -->
+	  <action name="AddCartAction" class="com.furniture_rental.action.AddCartAction" method="execute">
+	    <result name="success">cart.jsp</result>
+	    <result name="error">systemError.html</result>
+	    <result name="sessionTimeout">sessionError.jsp</result>
+	  </action>
+
+	  <!-- 6 -->
+	  <action name="CartAction" class="com.furniture_rental.action.CartAction" method="execute">
+	    <result name="success">cart.jsp</result>
+	    <result name="sessionTimeout">sessionError.jsp</result>
+	  </action>
+
+	  <!-- 6 -->
+	  <action name="DeleteCartAction" class="com.furniture_rental.action.DeleteCartAction" method="execute">
+	    <result name="success">cart.jsp</result>
+	    <result name="error">systemError.html</result>
+	    <result name="sessionTimeout">sessionError.jsp</result>
+	  </action>
+
+	  <!-- 7-1 -->
+	  <action name="SettlementConfirmAction" class="com.furniture_rental.action.SettlementConfirmAction" method="execute">
+	    <result name="success">settlementConfirm.jsp</result>
+	    <result name="login">login.jsp</result>
+	  </action>
+
+	  <!-- 7-2 -->
+	  <action name="DeleteDestinationAction" class="com.furniture_rental.action.DeleteDestinationAction" method="execute">
+	    <result name="success">settlementConfirm.jsp</result>
+	    <result name="error">systemError.html</result>
+	    <result name="sessionTimeout">sessionError.jsp</result>
+	  </action>
+
+	  <!-- 8 -->
+	  <action name="CreateDestinationAction" class="com.furniture_rental.action.CreateDestinationAction" method="execute">
+	    <result name="success">createDestination.jsp</result>
+	    <result name="sessionTimeout">sessionError.jsp</result>
+	  </action>
+
+	  <!-- 8 -->
+	  <action name="CreateDestinationConfirmAction" class="com.furniture_rental.action.CreateDestinationConfirmAction" method="execute">
+	    <result name="success">createDestinationConfirm.jsp</result>
+	    <result name="error">createDestination.jsp</result>
+	    <result name="sessionTimeout">sessionError.jsp</result>
+	  </action>
+
+	  <!-- 8 -->
+	  <action name="CreateDestinationCompleteAction" class="com.furniture_rental.action.CreateDestinationCompleteAction" method="execute">
+	    <result name="success">createDestinationComplete.jsp</result>
+	    <result name="error">systemError.html</result>
+	    <result name="sessionTimeout">sessionError.jsp</result>
+	  </action>
+
+	  <!-- 9 -->
+	  <action name="SettlementCompleteAction" class="com.furniture_rental.action.SettlementCompleteAction" method="execute">
+	    <result name="success">settlementComplete.jsp</result>
+	    <result name="error">systemError.html</result>
+	    <result name="sessionTimeout">sessionError.jsp</result>
+	  </action>
+
+	  <!-- 10 -->
+	  <action name="MyPageAction" class="com.furniture_rental.action.MyPageAction" method="execute">
+	    <result name="success">mypage.jsp</result>
+	    <result name="sessionTimeout">sessionError.jsp</result>
+	  </action>
+
+	  <!-- 11 -->
+	  <action name="PurchaseHistoryAction" class="com.furniture_rental.action.PurchaseHistoryAction" method="execute">
+	    <result name="success">purchaseHistory.jsp</result>
+	    <result name="sessionTimeout">sessionError.jsp</result>
+	  </action>
+
+	  <!-- 11 -->
+	  <action name="DeletePurchaseHistoryAction" class="com.furniture_rental.action.DeletePurchaseHistoryAction" method="execute">
+	    <result name="success">purchaseHistory.jsp</result>
+	    <result name="error">systemError.html</result>
+	    <result name="sessionTimeout">sessionError.jsp</result>
+	  </action>
+
+	  <!-- 12 -->
+	  <action name="LogoutAction" class="com.furniture_rental.action.LogoutAction" method="execute">
+	    <result name="success">index.jsp</result>
+	  </action>
+	</package>
+</struts>
