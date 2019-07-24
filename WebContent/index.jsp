@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url='HomeAction'">
+<meta http-equiv="refresh" content="0; url='ProductListAction'">
 <link rel="stylesheet" href="./css/jaguar.css">
 <title>ホーム画面に遷移します</title>
 </head>
