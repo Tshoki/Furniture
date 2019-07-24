@@ -5,13 +5,12 @@
 <html>
 <head>
 <link rel="stylesheet" href="./css/jaguar.css">
+<link rel="stylesheet" href="./css/home.css">
 <meta charset="UTF-8">
 <title>ホーム画面</title>
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-	<div id="start">
-		<img src="./images/shoes1.jpg"> ホーム画面
-	</div>
+	<img src="./images/bg_shoes.jpg" id="bg_img">
 </body>
 </html>

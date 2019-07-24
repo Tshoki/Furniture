@@ -1,10 +1,10 @@
 set names utf8;
 set foreign_key_checks = 0;
 
-drop database if exists jaguar;
-create database if not exists jaguar;
+drop database if exists furniture;
+create database if not exists furniture;
 
-use jaguar;
+use furniture;
 
 create table user_info(
 id int primary key not null auto_increment,

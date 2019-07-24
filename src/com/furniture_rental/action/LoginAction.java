@@ -15,7 +15,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class LoginAction extends ActionSupport implements SessionAware {
 	private String userId;
 	private String password;
-	private boolean savedUserIdFlg; //
+	private boolean savedUserIdFlg;
 	private String notFoundUserMessage;
 	private List<String> userIdErrorMessageList;
 	private List<String> passwordErrorMessageList;
@@ -30,19 +30,19 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		}
 
 		// ユーザー登録画面から遷移
-		if (!session.containsKey("createUserId")) {
-			userId = session.get("createUserId").toString();
+		if (session.containsKey("userIdForCreateUser")) {
+			userId = session.get("userIdForCreateUser").toString();
 			password = session.get("password").toString();
-			session.remove("createUserId");
+			session.remove("userIdForCreateUser");
 			session.remove("password");
 		}
 
 		if (savedUserIdFlg) {
-			session.put("savedUserFlg", true);
+			session.put("savedUserIdFlg", true);
 			session.put("savedUserId", userId);
 		} else {
 			session.remove("savedUserIdFlg");
-			session.remove("password");
+			session.remove("savedUserId");
 		}
 
 		String result = ERROR;
@@ -53,7 +53,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		passwordErrorMessageList = ic.docCheck("パスワード", password, 1, 16, true, true, true, false, true, false);
 
 		// エラー判定時
-		if (userIdErrorMessageList.size() > 0 || passwordErrorMessageList.size() > 0) {
+		if (userIdErrorMessageList.size() > 0 ||
+				passwordErrorMessageList.size() > 0) {
 			session.put("logined", 0);
 			return result;
 		}
@@ -69,7 +70,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			if (cartInfoForTempUserId != null) {
 				boolean relate = LinkToCart(tempUserId, cartInfoForTempUserId);
 				if (!relate) {
-					result = "DBEror";
+					result = "DBError";
 				}
 			}
 				if (session.containsKey("cartFlg")) {
@@ -78,7 +79,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				} else {
 					result = SUCCESS;
 				}
-				UserInfoDTO userDTO = new UserInfoDTO();
+				UserInfoDTO userDTO = userDAO.getUserInfo(userId, password);
 				session.put("userId", userDTO.getUserId());
 				session.put("logined", 1);
 				session.remove("tempUserId");
