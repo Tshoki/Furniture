@@ -14,20 +14,21 @@ import com.furniture_rental.dao.ProductInfoDAO;
 public class HomeAction extends ActionSupport implements SessionAware {
 	private List<ProductInfoDTO> productInfoDTOList;
 	private Map<String, Object> session;
-	
+
 	public String execute() {
 
 		if (!(session.containsKey("userId"))&& (!session.containsKey("tempUserId"))) {
 			CommonUtility common = new CommonUtility();
 			session.put("tempUserId", common.getRamdomValue());
 		}
+
 		// ログイン
 		if (!session.containsKey("logined")) {
 			session.put("logined", 0);
 		}
-		// 検索
 
-		/*if (!session.containsKey("categoryList")) {
+		// 検索
+		if (!session.containsKey("categoryList")) {
 			List<CategoryDTO> categoryList = new ArrayList<CategoryDTO>();
 			CategoryDAO categoryDAO = new CategoryDAO();
 			try {
@@ -36,7 +37,7 @@ public class HomeAction extends ActionSupport implements SessionAware {
 				categoryList = null;
 			}
 			session.put("categoryList", categoryList);
-		}*/
+		}
 			ProductInfoDAO productInfo=new ProductInfoDAO();
 			productInfoDTOList = productInfo.getProductInfoListAll();
 
